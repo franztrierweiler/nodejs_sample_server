@@ -3,15 +3,19 @@
 // First way: put debugger keyword in the code and launch node debug server.js
 // Second (more comfortable) way: use node-inspector and just node --debug-brk server.js
 var http = require('http');
+const url = require('url');
 
-// Let's define a port we want to listen to
+// Port d'écoute du serveur HTTP
 const PORT=8080;
 
-// We need a function which handles requests and send response
-function handleRequest(request, response){
+// Callback appellée à chaque réception de requête HTTP
+function handleRequest(request, response)
+{
     if (request.url == '/')
     {
     	response.write('Vous êtes au début');
+      response.write('PORT = ');
+      response.write(String(request.url.port));
     }
     else if (request.url == "/franz")
     {
@@ -24,11 +28,28 @@ function handleRequest(request, response){
     response.end();
 }
 
-// Create a server
+// Callback appellée à chaque réception de requête HTTP
+function handleListenReady(port)
+{
+  console.log("------------------");
+  console.log("| Serveur lancé  |");
+  console.log("------------------");
+  console.log("Serveur en écoute sur: http://localhost:%s", port);
+}
+
+// Création du serveur
 var server = http.createServer(handleRequest);
 
-//Let's start our server
+server.listen(PORT, handleListenReady(PORT) );
+
+// Démarrage du serveur
+/*
 server.listen(PORT, function(){
     // Callback triggered when server is successfully listening. Hurray!
-    console.log("Server listening on: http://localhost:%s", PORT);
+    console.log("------------------");
+    console.log("| Serveur lancé  |");
+    console.log("------------------");
+    console.log("\n");
+    console.log("Serveur en écoute sur: http://localhost:%s\n", PORT);
 });
+*/
