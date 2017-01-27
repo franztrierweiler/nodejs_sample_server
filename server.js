@@ -6,7 +6,7 @@ var http = require('http');
 const url = require('url');
 
 // Port d'écoute du serveur HTTP
-var port = 8080;//process.env.PORT || 8080;
+var port = process.env.PORT;
 
 // Callback appellée à chaque réception de requête HTTP
 function handleRequest(request, response)
