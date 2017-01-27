@@ -1,0 +1,8 @@
+{
+  "name": "Première application Node.js hébergée sur Heroku",
+  "description": "Une application NOde.js sur Heroku",
+  "repository": "https://github.com/franztrierweiler/nodejs_sample_server",
+  "logo": "",
+  "keywords": ["node", "express", "static"],
+  "image": "heroku/nodejs"
+}
