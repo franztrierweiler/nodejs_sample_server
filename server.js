@@ -6,7 +6,7 @@ var http = require('http');
 const url = require('url');
 
 // Port d'écoute du serveur HTTP
-const PORT=8080;
+var port = process.env.PORT || 8080;
 
 // Callback appellée à chaque réception de requête HTTP
 function handleRequest(request, response)
@@ -40,7 +40,7 @@ function handleListenReady(port)
 // Création du serveur
 var server = http.createServer(handleRequest);
 
-server.listen(PORT, handleListenReady(PORT) );
+server.listen(port, handleListenReady(port) );
 
 // Démarrage du serveur
 /*
